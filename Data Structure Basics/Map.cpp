@@ -14,6 +14,7 @@ int main()
     map<string, vector<pair<int, int>>> mp4;
 
     mp[10] = 10;
+    mp[10] = 9; // map stores unique key value pairs
     mp[5];
     mp[20] = 1;
 
