@@ -146,7 +146,6 @@ async function migrateData() {
 
     // Insert data
     await insertData(db, table, excelColumns, excelData);
-    console.log("Data migration successful!");
 
     db.close();
   } catch (error) {
