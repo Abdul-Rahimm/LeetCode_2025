@@ -4,31 +4,80 @@ using namespace std;
 #define all(x) x.begin(), x.end()
 typedef vector<int> vi;
 typedef vector<vi> vii;
-
-int solve(int a, int b)
+// if debugging is solving errors in code.
+// then programming is the process of introducing errors in the code.
+class employee
 {
+private:
+    int ID;
+    string name;
+    string designation;
 
-    // base case
-    if (b == 1)
-        return a;
-
-    int half = solve(a, b / 2);
-    half *= half;
-
-    if (b % 2)
+public:
+    // constructor
+    employee(int id, string name, string designation)
     {
-        half *= a;
+        cout << "doosra wala constructor is called " << endl;
+        this->ID = id;
+        this->name = name;
+        this->designation = designation;
+    }
+    employee()
+    {
+        cout << "Default constructor is called " << endl;
+    }
+    employee(int id, string name)
+    {
+        cout << "teesra wala constructor is called " << endl;
+        this->ID = id;
+        this->name = name;
+    }
+    // setter functions
+    void setID(int ID)
+    {
+        this->ID = ID;
+    }
+    void setName(string name)
+    {
+        this->name = name;
+    }
+    void setDesignation(string designation)
+    {
+        this->designation = designation;
     }
 
-    return half;
-}
+    // getter function --> return
+    int getID()
+    {
+        return ID;
+    }
+    string getName()
+    {
+        return name;
+    }
+    string getDesignation()
+    {
+        return designation;
+    }
+    void DisplayInformation()
+    {
+        cout << this->ID << " " << this->name << " " << this->designation << endl;
+    }
+};
 
 int main()
 {
-    // 2^16
+    employee emp1;
+    employee emp2(11, "muneeb", "Learner of OOP");
+    employee emp3(11, "muneeb");
 
-    int a = 2;
-    int b = 4;
+    emp1.setID(10);
+    emp1.setName("abdul raheem");
+    emp1.setDesignation("Senior c++ engineer");
 
-    cout << solve(a, b) << endl;
+    emp1.DisplayInformation();
+    cout << endl;
+    emp2.DisplayInformation();
+    cout << endl;
+    emp3.DisplayInformation();
 }
