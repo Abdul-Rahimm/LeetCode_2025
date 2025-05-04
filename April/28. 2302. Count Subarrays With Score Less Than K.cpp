@@ -9,10 +9,19 @@ public:
         int j = 0;
         int n = nums.size();
         long long sum = 0;
-        int commonPart = 0;
+        long long commonPart = 0;
 
-        while (j < n)
+        while (j <= n)
         {
+            if (j == n)
+            {
+                int subArraySize = j - i;
+                long long toAdd = ((long long)subArraySize * (subArraySize + 1)) / 2;
+
+                ans += toAdd - commonPart;
+                cout << "Added " << toAdd << " Minus " << commonPart << " i = " << i << " and j = " << j << endl;
+                return ans;
+            }
 
             sum += nums[j];
             int windowLen = j - i + 1;
@@ -23,10 +32,10 @@ public:
                 continue;
             }
 
-            int subArraySize = j - i;
-            int toAdd = (subArraySize * (subArraySize + 1)) / 2;
+            long long subArraySize = j - i;
+            long long toAdd = ((long long)subArraySize * (subArraySize + 1)) / (long long)2;
 
-            cout << "Added " << toAdd << endl;
+            cout << "Added " << toAdd << " Minus " << commonPart << " i = " << i << " and j = " << j << endl;
             ans += toAdd - commonPart;
             commonPart = 0;
 
@@ -40,19 +49,9 @@ public:
 
             // Inclusion Exclusion Principle
             int diff = j - i;
-            commonPart = (diff * (diff + 1)) / 2;
+            commonPart = ((long long)diff * (diff + 1)) / 2;
 
             j++;
-
-            if (j >= n)
-            {
-                int subArraySize = j - i;
-                int toAdd = (subArraySize * (subArraySize + 1)) / 2;
-
-                ans += toAdd - commonPart;
-                commonPart = 0;
-                cout << "Added " << toAdd << endl;
-            }
         }
 
         return ans;
